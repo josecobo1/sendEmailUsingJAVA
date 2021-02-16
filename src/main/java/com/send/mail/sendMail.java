@@ -17,29 +17,29 @@ public class sendMail {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		String from = "cobogarciaj@gmail.com";
+		String from = Messages.getString("sendMail.0"); //$NON-NLS-1$
 		
 		Scanner scanner = new Scanner(System.in);
 		
-		System.out.println("To:");
+		System.out.println(Messages.getString("sendMail.1")); //$NON-NLS-1$
 		String to = scanner.nextLine().replaceAll("\\s+", "");
 		
-		System.out.println("Subject:");
+		System.out.println(Messages.getString("sendMail.4")); //$NON-NLS-1$
 		String subject = scanner.nextLine();
 		
-		System.out.println("Message:");
+		System.out.println(Messages.getString("sendMail.5")); //$NON-NLS-1$
 		String textMessage = scanner.nextLine();
 		
 		Properties properties = System.getProperties();
 		
-		properties.put("mail.smtp.host", "smtp.gmail.com");
-		properties.put("mail.smtp.port", "465");
-		properties.put("mail.smtp.ssl.enable", "true");
-		properties.put("mail.smtp.auth", "true");
+		properties.put(Messages.getString("sendMail.6"), Messages.getString("sendMail.7")); //$NON-NLS-1$ //$NON-NLS-2$
+		properties.put(Messages.getString("sendMail.8"), Messages.getString("sendMail.9")); //$NON-NLS-1$ //$NON-NLS-2$
+		properties.put(Messages.getString("sendMail.10"), Messages.getString("sendMail.11")); //$NON-NLS-1$ //$NON-NLS-2$
+		properties.put(Messages.getString("sendMail.12"), Messages.getString("sendMail.13")); //$NON-NLS-1$ //$NON-NLS-2$
 		
 		Session session = Session.getInstance(properties, new javax.mail.Authenticator() {
 			protected PasswordAuthentication getPasswordAuthentication() {
-				return new PasswordAuthentication("sendingemailusingjava@gmail.com", decriptPassword("c2FnZW0xNTl1Mg=="));
+				return new PasswordAuthentication(Messages.getString("sendMail.14"), decriptPassword(Messages.getString("sendMail.15"))); //$NON-NLS-1$ //$NON-NLS-2$
 			}
 
 		});
@@ -53,9 +53,9 @@ public class sendMail {
 			message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
 			message.setSubject(subject);
 			message.setText(textMessage);
-			System.out.println("sending...");
+			System.out.println(Messages.getString("sendMail.16")); //$NON-NLS-1$
 			Transport.send(message);
-			System.out.println("Message sent :)");
+			System.out.println(Messages.getString("sendMail.17")); //$NON-NLS-1$
 		} catch(MessagingException mex) {
 			mex.printStackTrace();
 		}
